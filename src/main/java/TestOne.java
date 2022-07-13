@@ -24,7 +24,7 @@ public class TestOne {
             params2.put("to_state", "WI");
             params2.put("to_city", "Green bay");
             params2.put("to_street", "1335 E 103rd St");
-            params2.put("amount", 16.8);
+            params2.put("amount", 19.99);
             params2.put("shipping", 0);
 
 //            List<Map> nexusAddresses = new ArrayList();
@@ -41,7 +41,7 @@ public class TestOne {
             lineItem.put("id", 1);
             lineItem.put("quantity", 1);
             lineItem.put("product_tax_code", "20010");
-            lineItem.put("unit_price", 16.8);
+            lineItem.put("unit_price", 19.99);
             lineItem.put("discount", 0);
             lineItems.add(lineItem);
 
@@ -51,8 +51,10 @@ public class TestOne {
             TaxResponse res = client.taxForOrder(params2);
 //            Float VAT = res.tax.getAmountToCollect();
 //            Float GrandTotal= (Float) params2.get("amount");
-            System.out.println("VAT: " + res.tax.getAmountToCollect());
+//            System.out.println("VAT: " + res.tax.getAmountToCollect());
 //            System.out.println(VAT+GrandTotal);
+            String vat = String.valueOf(res.tax.getAmountToCollect());
+            System.out.println(vat);
         } catch (TaxjarException e) {
             e.printStackTrace();
         }
